@@ -17,7 +17,9 @@ pgray <- function(x) {
 }
 
 ## quick functions for horizontal spaces and bars
-hbar <- function() "\u2015"
+hbar0 <- function() "\u2015"
+hbar <- function() "\u2501"
+hbars0 <- function(n) if (n > 0) paste(rep(hbar0(), n), collapse = "") else ""
 hbars <- function(n) if (n > 0) paste(rep(hbar(), n), collapse = "") else ""
 hspace <- function() " "
 hspaces <- function(n) if (n > 0) paste(rep(hspace(), n), collapse = "") else ""
@@ -47,7 +49,7 @@ format_verb <- function(verb) {
 format_prop <- function(prop, width) {
   done <- round(prop * width)
   left <- width - done
-  sprintf("%s%s", ppink(hbars(done)), pgray(hbars(left)))
+  sprintf("%s%s", ppink(hbars(done)), pgray(hbars0(left)))
 }
 
 ## adjust width given width of verb and secs
