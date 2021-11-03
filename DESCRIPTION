@@ -1,0 +1,13 @@
+Package: pbr
+Title: Progress Bar
+Version: 0.0.1
+Authors@R: person("Michael W.", "Kearney", ,
+    email = "mike.wayne.kearney@gmail.com", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-0730-4694"))
+Description: A simple, lite, and pretty progress bar.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+URL: https://github.com/mkearney/pbr
+BugReports: https://github.com/mkearney/pbr/issues
