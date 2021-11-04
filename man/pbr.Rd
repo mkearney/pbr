@@ -4,18 +4,10 @@
 \alias{pbr}
 \title{Progress bar}
 \usage{
-pbr(
-  iterations,
-  verb = "working",
-  width = NULL,
-  min_width = nchar(verb) + 5,
-  max_width = 100L
-)
+pbr(iterations, width = NULL, min_width = 10, max_width = 100L)
 }
 \arguments{
 \item{iterations}{Number of total expected iterations}
-
-\item{verb}{Character string describing what's happening}
 
 \item{width}{Desired width of the progress bar (including text)}
 

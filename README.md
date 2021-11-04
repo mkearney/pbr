@@ -20,7 +20,7 @@ Test out the progress bar
 
 ``` r
 > pb_test <- function(n = 50, secs = 3) {
-    pb <- pbr::pbr(n, "processing")
+    pb <- pbr::pbr(n)
     for (i in seq_len(n)) {
       Sys.sleep(secs / n)
       pb$tick()
@@ -28,5 +28,5 @@ Test out the progress bar
     pb$done()
   }
 > pb_test()
-..processing..  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━――――――――――――――――   1s
+███████████████████████████████████████████████████████████   1s
 ```

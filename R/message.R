@@ -1,26 +1,17 @@
 
 ## add print colors to text
-pblue <- function(x) {
-    paste0("\033[38;5;110m", x, "\033[39m")
+pdone <- function(x) {
+    paste0("\033[38;5;155m", x, "\033[39m")
 }
-pmint <- function(x) {
-    paste0("\033[38;5;36m", x, "\033[39m")
-}
-ppink <- function(x) {
-    paste0("\033[38;5;198m", x, "\033[39m")
-}
-ppurp <- function(x) {
-    paste0("\033[38;5;99m", x, "\033[39m")
-}
-pgray <- function(x) {
-    paste0("\033[38;5;241m", x, "\033[39m")
+prem <- function(x) {
+    paste0("\033[38;5;244m", x, "\033[39m")
 }
 
 ## quick functions for horizontal spaces and bars
-hbar0 <- function() "\u2015"
-hbar <- function() "\u2501"
+hbar0 <- function() "\u2588"
+hbar1 <- function() "\u2588"
 hbars0 <- function(n) if (n > 0) paste(rep(hbar0(), n), collapse = "") else ""
-hbars <- function(n) if (n > 0) paste(rep(hbar(), n), collapse = "") else ""
+hbars1 <- function(n) if (n > 0) paste(rep(hbar1(), n), collapse = "") else ""
 hspace <- function() " "
 hspaces <- function(n) if (n > 0) paste(rep(hspace(), n), collapse = "") else ""
 
@@ -40,32 +31,28 @@ format_secs <- function(secs = NULL) {
   } else {
     ""
   }
-  ppurp(secs)
-}
-format_verb <- function(verb) {
-  pmint(sprintf("..%s..  ", verb))
+  pdone(secs)
 }
 
 format_prop <- function(prop, width) {
   done <- round(prop * width)
   left <- width - done
-  sprintf("%s%s", ppink(hbars(done)), pgray(hbars0(left)))
+  sprintf("%s%s", pdone(hbars1(done)), prem(hbars0(left)))
 }
 
-## adjust width given width of verb and secs
-calc_width <- function(width = NULL, verb, secs = 5L) {
-  verb <- (if (is.character(verb)) nchar(verb) else verb) + 6
+## adjust width given width of secs
+calc_width <- function(width = NULL, secs = 5L) {
   if (is.null(width)) {
     width <- getOption("width", 80)
   }
-  width - verb - secs
+  width - secs
 }
 
 as_pbr_msg <- function(x) structure(x, class = "pbr_msg")
 as_pbr <- function(x) structure(x, class = c("pbr", "list"))
 
-print.pbr_msg <- function(x, ..) {
-  cat(x)
+print.pbr_msg <- function(x, ...) {
+  cat(.makeMessage(x))
   cat(.makeMessage("\r"))
 }
 
@@ -78,11 +65,10 @@ print.pbr <- function(x, ...) {
 
 
 ## build the actual bar
-pb_build_msg <- function(verb, prop, width = NULL, secs = NULL) {
+pb_build_msg <- function(prop, width = NULL, secs = NULL) {
   as_pbr_msg(
     paste0(
-      format_verb(verb),
-      format_prop(prop, calc_width(width, verb)),
+      format_prop(prop, calc_width(width)),
       format_secs(secs)
     )
   )
