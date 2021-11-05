@@ -23,7 +23,7 @@ Create a progress bar object
 }
 \examples{
 ## define test function with a for loop
-pb_test <- function(n = 50, secs = 5) {
+pb_test <- function(n = 50, secs = 3) {
   pb <- pbr(n)
   on.exit(pb$done(), add = TRUE)
   for (i in seq_len(n)) {
