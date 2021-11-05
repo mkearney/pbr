@@ -30,3 +30,4 @@ Test out the progress bar
 > pb_test()
 ███████████████████████████████████████████████████████████   1s
 ```
+![](docs/tools/readme/ex.gif)
