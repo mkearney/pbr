@@ -4,7 +4,7 @@
 \alias{pbr}
 \title{Progress bar}
 \usage{
-pbr(iterations, width = NULL, min_width = 10, max_width = 100L)
+pbr(iterations, width = NULL, min_width = 10, max_width = 1000L)
 }
 \arguments{
 \item{iterations}{Number of total expected iterations}
