@@ -67,6 +67,13 @@ calc_width <- function(width = NULL, secs = 6L) {
   width - secs
 }
 
+get_width <- function(width = NULL, min_width = NULL, max_width = NULL) {
+  if (is.null(width)) {
+    width <- getOption("width", 80)
+  }
+  width %>>% max_width %<<% min_width
+}
+
 ## build the actual bar
 pb_build_msg <- function(prop, width = NULL, secs = NULL) {
   paste0("\r",
